@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Theory Project</title>
+    <link rel="stylesheet" href="J-Calculator-Bundle.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+</head>
+<body>
+    <main>
+        <div id="settings">
+            <div>
+                <select id="mode_select">
+                    <option selected>Node</option>
+                    <option>Grid</option>
+                </select>
+            </div>
+            <div>
+                <!-- Settings Button-->
+                <!-- Helper Button -->
+                <button id="btn_info">i</button>
+            </div>
+        </div>
+        <div id="cont">
+            <div id="path-tab-cont">
+                
+                <!-- Node Option -->
+                <div class="selected">
+                    <!-- Object Properties/Creator -->
+                    <div id="node_objectInterface">
+
+                    </div>
+                    <div id="node_pathPlane">
+                        <canvas id="c"></canvas>
+                    </div>
+
+                </div>
+
+                <!-- Grid Option -->
+                <div>
+                    <!-- Object Properties/Creator -->
+                    GRID
+                </div>
+
+            </div>
+            <!-- PathFinding Operations -->
+            <div id="path-operations">
+                <div class="tab_changer-button" data-tabs="path-operation-cont" id="path-operation-nav">
+                    <button class="selected">Operation</button>
+                    <button>Logs</button>
+                </div>
+                <div id="path-operation-cont">
+                    <!-- Path Operations -->
+                    <div class="p-2">
+                        <label class="font-smaller ">Algorithm</label>
+                        <select class="block w-100 p-1" id="algo-type">
+                            
+                        </select>
+                        <div id="algo-validation">
+                            <span>Need Start Node</span>
+                        </div>
+                        <button id="start-pathfind" class="w-100 p-1 mt-1 btn btn-success">Start</button>
+                    </div>
+                    <!-- Path Operation Logs -->
+                    <div class="p-2">
+                        <div id="path-logs">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script src="J-Calculator-Bundle.js"></script>
+<script src="util.js"></script>
+<script src="handler.js"></script>
+<script src="node.js"></script>
+<script src="proxy.js"></script>
+<script src="helper.js"></script>
+<script src="dom.js"></script>
+<script src="algo.js"></script>
+<script src="main.js"></script>
+</html>

@@ -1,0 +1,352 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, "Nirmala Ui";
+}
+
+button:hover,
+input:hover {
+    cursor: pointer;
+}
+
+input:focus, 
+textarea:focus, 
+button:focus{
+    outline: none;
+}
+
+body, html {
+    background: #222;
+    height: 100%;
+    color: white;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#settings {
+    width: 100%;
+    border-bottom: thin solid gray;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#mode_select {
+    padding: 2px 5px;
+    width: 100px;
+}
+
+#cont {
+    flex-grow: 1;
+    display: flex;
+}
+
+#path-tab-cont {
+    flex-grow: 1;
+}
+
+#path-tab-cont > div {
+    display: none;
+    height: 100%;
+}
+
+#path-tab-cont > div.selected {
+    display: flex;
+}
+
+#path-operations {
+    min-width: 300px;
+    border-left: thin solid gray;
+    display: flex;
+    flex-direction: column;
+}
+
+#node_objectInterface{
+    padding: 1rem;
+    width: 250px;
+    background: #2f2f2f;
+}
+
+#node_pathPlane {
+    display: flex;
+    flex-grow: 1;
+}
+
+#c {
+    flex-grow: 1;
+}
+
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    border: thin solid;
+    text-align: center;
+    align-items: center;
+    font-size: 1rem;
+}
+
+#btn_info {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #333;
+    color: white;
+}
+
+.btn-success {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-success:active {
+    background: #1e7e34;
+    border-color: #1e7e34;
+}
+
+.btn-success:disabled {
+    opacity: .65;
+    background: #1e7e34;
+    border-color: #1e7e34;
+    cursor: not-allowed;
+}
+
+.btn-danger {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+    border-color: #bd2130;
+}
+
+.btn-danger:active {
+    background: #bd2130;
+    border-color: #b21f2d;
+}
+
+.btn-danger:disabled {
+    opacity: .65;
+    background: #bd2130;
+    border-color: #b21f2d;
+    cursor: not-allowed;
+}
+
+.databind {
+    /* margin-bottom: .1rem; */
+}
+
+.databind label{
+    cursor: pointer;
+}
+
+.databind input[type="number"]::-webkit-inner-spin-button,
+.databind input[type="number"]::-webkit-outer-spin-button{
+    /* Hide all arrow spinner in input type number*/
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.databind input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+.databind-NodeCoord>*:nth-child(2):before{
+    content: "[";
+}
+.databind-NodeCoord>*:nth-child(2):after{
+    content: "]";
+}
+
+.databind {
+    display: flex;
+    flex-direction: column;
+}
+
+.databind[data-type="text"] input,
+.databind[data-type="number"] input{
+    order: 1;
+    background: transparent;
+    color: white;
+    border: none;
+    border-bottom: thin solid #aaa;
+}
+
+.databind[data-type="text"] label,
+.databind[data-type="number"] label{
+    order: 2;
+    font-size: .75rem;
+    color: #aaa;
+}
+
+.databind[data-type="action"] label{
+    display: none;
+}
+
+.databind[data-type="display"] {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: .8em;
+    color: #ccc;
+}
+
+.databind[data-type="toggle"],
+.toggle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .25rem .5rem;
+    border-radius: 5px;
+    background: #555;
+}
+
+.databind[data-type="toggle"] label,
+.toggle label{
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    flex-grow: 1;
+    cursor: pointer;
+}
+
+.databind[data-type="toggle"][data-value="true"],
+.toggle[data-value="true"]{
+    background: green;
+}
+
+.databind button{
+    width: 100%;
+    border: none;
+    padding: .5rem;
+    margin-top: .25rem;
+    border-radius: 5px;
+}
+
+
+.databind.neutral button{
+    background: #555;
+    color: white;
+}
+
+.databind.delete button{
+    background: crimson;
+    color: white;
+}
+
+.databind[data-is-disabled="true"] *{
+    color: grey;
+    cursor: not-allowed;
+}
+
+.databind[data-is-disabled="true"] button{
+    background: #444 !important;
+    color: grey;
+}
+
+
+.databind.deg-val-controller {
+    display: inline-block;
+    width: 25%;
+}
+
+.databind.deg-val-controller button{
+    border-radius: 0;
+    border-left: thin solid #999;
+}
+
+.databind.deg-val-controller.deg-val-ext button{
+    border-top-left-radius: 5px;
+}
+
+#path-operation-nav {
+    display: flex;
+    border-bottom: thin solid #999;
+}
+
+#path-operation-nav button{
+    flex-grow: 1;
+    padding: .25rem;
+    border-radius: 0;
+    border: none;
+    background: #222;
+    color: white;
+    border-left: thin solid #999;
+}
+
+#path-operation-nav button:first-child {
+    border-left: none;
+}
+
+#path-operation-nav button.selected {
+    background: #444;
+}
+
+#path-operation-cont {
+    flex-grow: 1;
+}
+
+#algo-validation {
+    display: flex;
+    flex-direction: column;
+    font-size: .75em;
+    color: #dc3545;
+}
+
+#node_objectInterface[data-null-select="true"]{
+    display: flex;
+    flex-direction: column;
+}
+
+.custom-file-input {
+    display: none;
+}
+
+.custom-file-input {
+    display: none;
+}
+
+#tool-load + label {
+    font-size: 1rem;
+}
+
+#tool-save {
+    font-size: 1rem;
+}
+
+
+#path-logs table {
+    text-align: center;
+    border-collapse: collapse;
+    border: thin solid white;
+    font-size: .9rem;
+}
+
+#path-logs table tr > * {
+    border-right: thin solid white;
+}
+
+#path-logs table td{
+    border-top: thin solid white;
+    padding: .1rem 0;
+}
+
+#path-logs table th {
+    padding: 0 .25rem;
+}
