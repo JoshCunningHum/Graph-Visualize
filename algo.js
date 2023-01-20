@@ -41,6 +41,7 @@ class Djikstra extends PathFinding{
                     node.id == start.id ? 0 : Infinity,
                     null
                 ])
+                node.isMultiDirected = false;
             })
 
             console.log(record);
