@@ -24,6 +24,7 @@ class Djikstra extends PathFinding{
     static pathFind(...args){
         // Will add other features
         const [network] = args;
+        const records = [];
 
         for(const [start, ends, nodes] of network){
             console.log(start);
@@ -41,10 +42,7 @@ class Djikstra extends PathFinding{
                     node.id == start.id ? 0 : Infinity,
                     null
                 ])
-                node.isMultiDirected = false;
             })
-
-            console.log(record);
 
             let count = 0;
 
@@ -59,11 +57,10 @@ class Djikstra extends PathFinding{
                         else return acc;
                     }, [Infinity, null]);
 
-                console.log(nearest[1].text);
-
                 // Register Degrees to Record
                 nearest[1].degrees.forEach(deg => {
                     const other = deg.getOtherSide(nearest[1]);
+                    deg.isMultiDirected = true;
 
                     // If connected node is already visited, ignore
                     if(visited.some(n => n.id == other.id)) return;
@@ -78,7 +75,6 @@ class Djikstra extends PathFinding{
 
                         
                         // Set Direction
-                        deg.isMultiDirected = false;
                         deg.setAsStart(other);
                     }
                 })
@@ -92,8 +88,21 @@ class Djikstra extends PathFinding{
                 if(count == nodes.length) break;
             }
 
-            return record;
+            // Set multidirection on created paths (based on record)
+
+            record.forEach(r => {
+                if(r[2] == null) {
+                    // console.log(r);
+                    return;
+                }
+                const deg = r[0].get_degree(r[2].id);
+                deg.real.isMultiDirected = false;
+            })
+
+            records.push(record);
         }
+
+        return records;
     }
 
     static onSelect(dom, handler){
@@ -129,9 +138,8 @@ class Djikstra extends PathFinding{
         </tbody>
         `;
 
-        console.log(data);
-
-        data.forEach(r => {
+        // TODO: Enable multi network data
+        data[0].forEach(r => {
             const tr = document.createElement("tr");
 
             tr.innerHTML = `
