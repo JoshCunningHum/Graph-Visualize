@@ -122,38 +122,48 @@ class Djikstra extends PathFinding{
 
     static log(data){
         const cont = document.getElementById("path-logs");
+        cont.innerHTML = "";
 
-        const table = document.createElement("table");
-
-        table.innerHTML = `
-        <thead>
-            <tr>
-                <th>Vertex</th>
-                <th>Distance from start</th>
-                <th>Previous Node</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-        `;
-
-        // TODO: Enable multi network data
-        data[0].forEach(r => {
-            const tr = document.createElement("tr");
-
-            tr.innerHTML = `
-            <td>${r[0].text}</td>
-            <td>${r[1]}</td>
-            <td>${r[2] == null ? "" : r[2].text}</td>
+        data.forEach((d, i) => {
+            const content = document.createElement("div");
+            const table = document.createElement("table");
+    
+            table.innerHTML = `
+            <thead>
+                <tr>
+                    <th>Vertex</th>
+                    <th>Distance from start</th>
+                    <th>Previous Node</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            </tbody>
             `;
 
-            table.children[1].append(tr);
-        })
+            d.forEach(r => {
+                const tr = document.createElement("tr");
+    
+                tr.innerHTML = `
+                <td>${r[0].text}</td>
+                <td>${r[1]}</td>
+                <td>${r[2] == null ? "" : r[2].text}</td>
+                `;
+    
+                table.children[1].append(tr);
+            })
+    
+            const caption = document.createElement("div");
+            caption.classList.add("caption");
+            caption.innerHTML = `Network: ${d[0][0].text}`;
 
-        cont.innerHTML = "";
-        cont.append(table);
-        sorttable.makeSortable(table);
+            content.classList.add("log-content");
+
+            content.appendChild(table);
+            cont.append(caption, content);
+            sorttable.makeSortable(table);
+            DOM.make_collapsible(caption, content);
+        })
     }
 }
 

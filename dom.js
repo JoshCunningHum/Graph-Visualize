@@ -18,6 +18,27 @@ const DOM = {
         const algo = PathFindingList[pathFindingIndex];
 
         algo.log(algo.pathFind(networks));
+    },
+    make_collapsible(trigger, content, collapseByDefault = true, collapseClass = "collapsed"){
+        if(collapseByDefault){
+            content.classList.add(collapseClass);
+            trigger.dataset.isCollapsed = true;
+        }
+
+        content.dataset.collapseId = `collapsible-${Util.gen_id()}`;
+        trigger.dataset.collapseTarget = content.dataset.collapseId;
+        trigger.dataset.collapseClass = collapseClass;
+        trigger.addEventListener("click", function(e){
+            const target = document.querySelector(`*[data-collapse-id="${this.dataset.collapseTarget}"]`);
+
+            if(this.dataset.isCollapsed == "true"){
+                target.classList.remove(this.dataset.collapseClass);
+                this.dataset.isCollapsed = "false";
+            }else{
+                target.classList.add(this.dataset.collapseClass);
+                this.dataset.isCollapsed = "true";
+            }
+        })
     }
 }
 
